@@ -97,19 +97,20 @@ class PersonControllerTest {
                 .content(new ObjectMapper().writeValueAsString(new Person()))
                 .contentType(MediaType.APPLICATION_JSON);
 
+        // todo: assert that an exception is thrown as that is the current behavior expected when trying to update with an id that does not exist
+
 //        assertThrows(NoSuchElementException.class, () -> {
 //            mockMvc.perform(request)
 //                    .andExpect(status().isInternalServerError());
 //        },
 //                "Expected NoSuchElementException to be thrown");
 
-        // todo: run this, instead of the above commented out code.
-        try {
-            mockMvc.perform(request)
-                    .andExpect(status().isInternalServerError());
-        } catch (NestedServletException ex) {
-            throw ex.getCause();
-        }
+//        try {
+//            mockMvc.perform(request)
+//                    .andExpect(status().isInternalServerError());
+//        } catch (NestedServletException ex) {
+//            throw ex.getCause();
+//        }
     }
 
     @Test
@@ -134,7 +135,7 @@ class PersonControllerTest {
     }
 
     @Test
-    void deletePerson_NoSuchElementExceptionThrown() throws Exception {
+    void deletePerson_NoSuchElementExceptionThrown() {
         int testId = 1;
         RequestBuilder request = MockMvcRequestBuilders.delete("/api/person/delete?id=" + testId);
 
