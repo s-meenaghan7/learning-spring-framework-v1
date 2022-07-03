@@ -20,11 +20,10 @@ public class PersonController {
 
     @PostMapping("add")
     public ResponseEntity<Object> addPerson(@RequestBody Person person) {
-        personService.addPerson(person);
         return ResponseHandler.generateResponse(
                 "Saved data successfully",
                 HttpStatus.CREATED,
-                person
+                personService.addPerson(person)
         );
     }
 
