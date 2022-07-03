@@ -23,7 +23,7 @@ public class PersonController {
         personService.addPerson(person);
         return ResponseHandler.generateResponse(
                 "Saved data successfully",
-                HttpStatus.OK,
+                HttpStatus.CREATED,
                 person
         );
     }

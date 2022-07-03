@@ -16,18 +16,19 @@ public class PersonService {
         personRepository.save(person);
     }
 
-    public boolean updatePerson(int id, Person newPerson) {
+    public boolean updatePerson(int id, Person values) {
         if (findPersonById(id).isPresent()) {
             personRepository.save(
                 new Person(
                     id,
-                    newPerson.getName(),
-                    newPerson.getAge(),
-                    newPerson.getGender()
+                    values.getName(),
+                    values.getAge(),
+                    values.getGender()
                 )
             );
             return true;
         }
+
         return false;
     }
 
